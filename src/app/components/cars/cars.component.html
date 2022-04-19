@@ -1,0 +1,56 @@
+<div class="content">
+    <div fxLayout="row wrap">
+        <div fxFlex="20%">
+            <mat-card class="search-card">
+                <h2>Filters</h2>
+                <div><a [class]="order == 'NONE'?'active':''" (click)="changePriceFilter('NONE','NONE')">PAR DEFAUT</a>
+                </div><br>
+                <div>Prix :<br>
+                    <a [class]="order == 'ASC' && filterOn == 'price'? 'active':''"
+                        (click)="changePriceFilter('price', 'ASC')">CROISSANT</a> |
+                    <a [class]="order == 'DESC'&& filterOn == 'price'?'active':''"
+                        (click)="changePriceFilter('price', 'DESC')">DECROISSANT</a>
+                </div>
+                <br>
+                <div>Mise en circulation : <br>
+                    <a [class]="order == 'ASC' && filterOn == 'issuance'? 'active':''"
+                        (click)="changePriceFilter('issuance', 'ASC')">CROISSANT</a> |
+                    <a [class]="order == 'DESC'&& filterOn == 'issuance'?'active':''"
+                        (click)="changePriceFilter('issuance', 'DESC')">DECROISSANT</a>
+                </div>
+                <h2>Recherches</h2>
+                <form method="post" [formGroup]="filterCars" (ngSubmit)="sendFilterForm(filterCars.controls)">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Mot dans l'intitulé</mat-label>
+                        <input matInput formControlName="searchWord">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" style="width: 50%;">
+                        <mat-label>Prix min</mat-label>
+                        <input type="number" matInput formControlName="minPrice">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" style="width: 50%;">
+                        <mat-label>Prix max</mat-label>
+                        <input type="number" matInput formControlName="maxPrice">
+                    </mat-form-field>
+
+
+                    <button mat-raised-button color="primary" type="submit" class="btn btn-primary mt-2"
+                        style="width: 100%;">
+                        Rechercher
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+
+        <div fxFlex="80%">
+            <div fxLayout="row wrap">
+                <div *ngFor="let c of garage | filters:filterOn:order" fxFlex="50%" class="show-cars">
+                    <app-car [car]="c"></app-car>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

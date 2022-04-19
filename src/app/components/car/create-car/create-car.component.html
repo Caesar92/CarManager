@@ -1,0 +1,167 @@
+<div class="content">
+    <div fxLayout="row wrap">
+        <div fxFlex="100%">
+            <mat-card>
+                <mat-card-title>Ajouter une voiture</mat-card-title>
+                <mat-card-content>
+                    <form method="post" [formGroup]="addCar"
+                    (ngSubmit)="addCar.valid && sendCarForm(addCar.value)">
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Titre de l'annonce</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="title.invalid" 
+                                [class.is-valid]="title.valid"
+                                type="text" name="title" formControlName="title">
+                            <mat-error *ngIf="title.invalid" class="error-message">
+                                Merci de saisir un titre d'annonce valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Ville de récupération</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="address.invalid" 
+                                [class.is-valid]="address.valid"
+                                type="text" name="address" formControlName="address">
+                            <mat-error *ngIf="address.invalid" class="error-message">
+                                Merci de saisir un titre d'annonce valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Marque du véhicule</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="brand.invalid" 
+                                [class.is-valid]="brand.valid"
+                                type="text" name="brand" formControlName="brand">
+                            <mat-error *ngIf="brand.invalid" class="error-message">
+                                Merci de saisir une marque valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Model du véhicule</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="model.invalid" 
+                                [class.is-valid]="model.valid"
+                                type="text" name="model" formControlName="model">
+                            <mat-error *ngIf="model.invalid" class="error-message">
+                                Merci de saisir un model valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Année du model</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="model_year.invalid" 
+                                [class.is-valid]="model_year.valid"
+                                type="number" name="model_year" formControlName="model_year">
+                            <mat-error *ngIf="model_year.invalid" class="error-message">
+                                Merci de saisir une année valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Mise en circulation du véhicule</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="issuance.invalid" 
+                                [class.is-valid]="issuance.valid"
+                                type="date" name="issuance" formControlName="issuance">
+                            <mat-error *ngIf="issuance.invalid" class="error-message">
+                                Merci de saisir une date de mise en circulation valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Kilométrtage</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="mileage.invalid" 
+                                [class.is-valid]="mileage.valid"
+                                type="number" name="mileage" formControlName="mileage">
+                            <mat-error *ngIf="mileage.invalid" class="error-message">
+                                Merci de saisir un kilometrage valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <!-- FUEL  -->
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Type de consommation</mat-label>
+                            <mat-select [formControl]="fuel">
+                                <mat-option *ngFor="let f of keys()" [value]="f">{{f}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="fuel.invalid" class="error-message">
+                                Merci de saisir au moins 1 type !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Couleur du véhicule</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="color.invalid" 
+                                [class.is-valid]="color.valid"
+                                type="text" name="color" formControlName="color">
+                            <mat-error *ngIf="color.invalid" class="error-message">
+                                Merci de saisir une couleur valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Nombre de portes du véhicule</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="numbers_doors.invalid" 
+                                [class.is-valid]="numbers_doors.valid"
+                                type="number" name="numbers_doors" formControlName="numbers_doors">
+                            <mat-error *ngIf="numbers_doors.invalid" class="error-message">
+                                Merci de saisir un nombre valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Nombre de cheveaux</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="horse_power.invalid" 
+                                [class.is-valid]="horse_power.valid"
+                                type="number" name="horse_power" formControlName="horse_power">
+                            <mat-error *ngIf="horse_power.invalid" class="error-message">
+                                Merci de saisir un nombre valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%; height: 80px;">
+                            <mat-label>Prix de mise en vente</mat-label>
+                            <input matInput 
+                                [class.is-invalid]="price.invalid" 
+                                [class.is-valid]="price.valid"
+                                type="number" name="price" formControlName="price">
+                            <mat-error *ngIf="price.invalid" class="error-message">
+                                Merci de saisir un prix valide !
+                            </mat-error>  
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label>Image du véhicule (Mettre une ',' pour séparer les url)</mat-label>
+                            <textarea matInput 
+                                type="number" name="pictures" formControlName="pictures"
+                                placeholder="url_face, url_arriere">
+                            </textarea>
+                        </mat-form-field>
+
+                        <mat-slide-toggle formControlName="sold">Disponible : {{sold.value}}</mat-slide-toggle>
+
+                        <div style="margin: 1%;"></div>
+
+                        <button mat-raised-button 
+                            [disabled]=" addCar.invalid"
+                            color="primary" 
+                            type="submit" 
+                            class="btn btn-primary mt-2"
+                            style="width: 100%;">
+                            Ajouter
+                        </button>
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

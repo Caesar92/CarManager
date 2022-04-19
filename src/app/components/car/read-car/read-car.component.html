@@ -1,0 +1,69 @@
+<div class="content">
+    <div fxLayout="row wrap">
+        <div fxFlex="100%">
+            <mat-card *ngIf="showCar != null; else loading">
+                <mat-card-title>{{showCar.title}}</mat-card-title>
+                <mat-card-subtitle>{{showCar.brand}} - {{showCar.model}} ({{showCar.model_year}})</mat-card-subtitle>
+                <div fxLayout="row wrap" style="padding: 1%;">
+                    <div fxFlex="50%" *ngFor="let i of showCar.pictures">
+                        <img mat-card-image [src]="i" alt="...">
+                    </div>
+                </div>
+                <mat-card-content>
+                    <div style="width:100%; text-align: end;">
+                        <div class="price">PRIX : {{showCar.price}}</div>
+                    </div>
+                    <h2>Informations</h2>
+                    <div fxLayout="row wrap">
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Addresse</div>
+                            <div class="value">{{showCar.address}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Marque</div>
+                            <div class="value">{{showCar.brand}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Model</div>
+                            <div class="value">{{showCar.model}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Année du model</div>
+                            <div class="value">{{showCar.model_year}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Mise en circulation</div>
+                            <div class="value">{{showCar.issuance}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Kilométrage</div>
+                            <div class="value">{{showCar.mileage}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Carburant</div>
+                            <div class="value">{{showCar.fuel}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Couleur</div>
+                            <div class="value">{{showCar.color}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Nombre de portes</div>
+                            <div class="value">{{showCar.numbers_doors}}</div>
+                        </div>
+                        <div fxFlex="25%" class="info">
+                            <div class="key">Puissance DIN</div>
+                            <div class="value">{{showCar.horse_power}} Ch</div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div style="margin-left: 50%; margin-top: 10%;">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

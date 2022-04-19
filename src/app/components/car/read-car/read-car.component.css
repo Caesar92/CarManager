@@ -1,0 +1,27 @@
+.content {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+.price {
+    margin-right: 2.5%;
+    font-size: 24px;
+}
+
+.info {
+    font-size: 18px;
+    padding-top: 4px;
+    padding-bottom: 12px;
+}
+
+.key {
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 2px;
+}
+
+.value {
+    padding-left: 0.25rem;
+}

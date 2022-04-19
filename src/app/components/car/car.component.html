@@ -1,0 +1,20 @@
+<mat-card class="car-card">
+    <mat-card-header>
+      <mat-card-title>{{car.title}}</mat-card-title>
+      <mat-card-subtitle>{{car.brand}} - {{car.model}} ({{car.model_year}})</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="mainPicture" alt="Photo of a Shiba Inu"
+        (mouseover)="changePictureVue($event)" (mouseout)="changePictureVue($event)"
+    >
+    <mat-card-content>
+        <div class="price" fxLayout="row wrap" style="text-align: start;">
+            <div fxFlex="100%">PRIX : {{car.price}} - MISE EN CIRUCLATION : {{car.issuance}}</div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button [routerLink]="['/', car.id]">DETAILS</button>
+      <button mat-button [routerLink]="['/update', car.id]">EDITER</button>
+      <button mat-button (click)="deleteCar(car.id)">SUPPRIMER</button>
+    </mat-card-actions>
+  </mat-card>
+  

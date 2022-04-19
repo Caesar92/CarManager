@@ -1,0 +1,15 @@
+.content {
+    width: 98%;
+    margin-left: 1%;
+}
+
+.search-card {
+    margin-right: 2%;
+}
+
+.active {
+    font-weight: bold;
+    color: #3f51b5;
+}
+
+
