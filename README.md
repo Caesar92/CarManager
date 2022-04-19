@@ -1,3 +1,3 @@
 # César GONNOT
 
-![alt text]("./capture.PNG")
+![alt text]("capture.PNG")
